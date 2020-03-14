@@ -15,3 +15,7 @@ ReactDOM.render(
     <Routes />
   </HashRouter>, document.getElementById('root')
 );
+
+if (module.hot) {
+  module.hot.accept();
+}

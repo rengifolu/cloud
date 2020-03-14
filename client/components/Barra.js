@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link ,NavLink } from "react-router-dom";
 import { Navbar, NavDropdown, Nav } from 'react-bootstrap';
-import Login from './Login';
 
 
 class barra extends React.Component {
@@ -10,7 +9,7 @@ class barra extends React.Component {
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand href="#home">MyCloud</Navbar.Brand>
+          <Navbar.Brand as={Link} to='/' exact>MyCloud</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
@@ -26,8 +25,8 @@ class barra extends React.Component {
               </NavDropdown>
             </Nav>
             <Nav>
-              <Nav.Link as={Link} to="#deets" exact>More deets</Nav.Link>
-              <Nav.Link as={Link} to="#memes" exact>Dank memes</Nav.Link>
+              <Nav.Link as={Link} to="/login" exact>Login</Nav.Link>
+              <Nav.Link as={Link} to="/sigin" exact>Sign In</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
