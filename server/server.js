@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
 
-mongoose.connect('mongodb+srv://diego:peru@clustercloud-trmk9.mongodb.net/test?retryWrites=true&w=majorit', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect('mongodb+srv://diego:peru@clustercloud-trmk9.mongodb.net/mycloud?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true });
 
 app.use('/', router);
 
