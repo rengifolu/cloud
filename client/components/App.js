@@ -4,7 +4,6 @@ import Carrousel from './Carrousel';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
 //import logo from './nubenu.jpg';
-//const logo = require('./nubenu.svg');
 
 
 
@@ -20,7 +19,6 @@ class App extends Component {
         <p className="App-intro">
           To get started Login-.
         </p>
-        {/* <img src={logo} width="100" height="50"  alt=''/> */}
         <Carrousel></Carrousel>
       </div>
     );

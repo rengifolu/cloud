@@ -44,9 +44,20 @@
     ]
   },
   "devDependencies": {
+    "and": "0.0.3",
+    "babel-core": "^6.26.3",
     "babel-loader": "^8.0.6",
+    "babel-plugin-file-loader": "^2.0.0",
     "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^3.4.2",
+    "file-loader": "^6.0.0",
+    "image-webpack-loader": "^6.0.0",
+    "install": "^0.13.0",
+    "node-sass": "^4.13.1",
+    "npm": "^6.14.2",
     "react-hot-loader": "^4.5.3",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.3",
     "webpack-cli": "^3.3.11"
   }
 }
