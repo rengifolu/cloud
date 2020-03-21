@@ -1,9 +1,13 @@
+.SigIn {
+  background-color: rgb(41, 107, 91);
+}
+
 @media all and (min-width: 480px) {
   .SigInin {
     padding: 60px 0;
   }
 
-  .SigIn Form {
+  .SigIn form {
     margin: 0 auto;
     margin-top: 35px;
     max-width: 320px;
