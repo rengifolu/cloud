@@ -26,8 +26,8 @@ class barra extends React.Component {
                 Blog
               </Nav.Link>
               <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                <NavDropdown.Item as={Link} to="#action/3.1" exact>
-                  Action
+                <NavDropdown.Item as={Link} to="/coronavirus" exact>
+                  Corona Virus
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="#action/3.2" exact>
                   Another action
