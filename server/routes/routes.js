@@ -1,8 +1,10 @@
 //server/routes/routes.js
 var express = require("express");
 var router = express.Router();
+const User = require("../models/User");
+const jwt = require("jsonwebtoken");
 
-var User = require("../../server/models/User");
+const secret = "mysecretsshhh";
 
 router.get("/", function(req, res) {
   res.render("index");
@@ -28,32 +30,41 @@ router.route("/register").post(function(req, res) {
     });
 });
 
-router.route("/login").post(async function(req, res) {
-  //console.log(req.body);
+router.route("/login").post(function(req, res) {
   const { email, password } = req.body;
-  const user = await User.findOne({
-    where: {
-      email: email
+  User.findOne({ email }, function(err, user) {
+    if (err) {
+      console.error(err);
+      res.status(500).json({
+        error: "Internal error please try again"
+      });
+    } else if (!user) {
+      res.status(401).json({
+        error: "Incorrect email or password found"
+      });
+    } else {
+      user.isCorrectPassword(password, function(err, same) {
+        if (err) {
+          res.status(500).json({
+            error: "Internal error please try again"
+          });
+        } else if (!same) {
+          res.status(401).json({
+            error: "Incorrect email or password"
+          });
+        } else {
+          // Issue token
+          const payload = { email };
+          const token = jwt.sign(payload, secret, {
+            expiresIn: "1h"
+          });
+          res.cookie("token", token, { httpOnly: true }).sendStatus(200);
+          //res.send("user successfully login!");
+          console.log("login");
+        }
+      });
     }
   });
-
-  console.log(user.toJSON());
-  if (!user) {
-    return res.status(403).send({
-      // Error 403: Acceso denegado/prohibido
-      error: "la informacion de login es incorrecta"
-    });
-  }
-
-  const isPasswordValid = await user.comparePassword(password);
-  // eslint-disable-next-line no-console
-  console.log(password, user.password);
-  if (!isPasswordValid) {
-    return res.status(403).send({
-      // Error 403: Acceso denegado/prohibido
-      error: "la informacion de password es incorrecta"
-    });
-  }
 });
 
 module.exports = router;
