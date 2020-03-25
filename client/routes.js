@@ -7,6 +7,7 @@ import Coronavirus from "./components/Coronavirus";
 import SigIn from "./components/SigIn";
 import Portfolio from "./components/Portfolio";
 import Blog from "./components/Blog";
+import Userloged from "./components/Userloged";
 export const Routes = () => (
   <Switch>
     <Route exact path="/" component={App} />
@@ -15,6 +16,7 @@ export const Routes = () => (
     <Route exact path="/sigin" component={SigIn} />
     <Route exact path="/portfolio" component={Portfolio} />
     <Route exact path="/blog" component={Blog} />
+    <Route exact path="/userloggedId" component={Userloged} />
   </Switch>
 );
 export default Routes;

@@ -30,7 +30,6 @@ class Login extends React.Component {
     this.handleClick(this);
   }
   handleClick(event) {
-    var self = this;
     var payload = {
       email: this.state.email,
       password: this.state.password
@@ -39,7 +38,7 @@ class Login extends React.Component {
       .post("./login", payload)
       .then(res => {
         if (res.status === 200) {
-          this.props.history.push("/");
+          this.props.history.push("/userlogedId");
         } else {
           const error = new Error(res.error);
           throw error;
