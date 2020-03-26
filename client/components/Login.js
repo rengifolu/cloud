@@ -38,7 +38,7 @@ class Login extends React.Component {
       .post("./login", payload)
       .then(res => {
         if (res.status === 200) {
-          this.props.history.push("/userlogedId");
+          this.props.history.push("/userloged");
         } else {
           const error = new Error(res.error);
           throw error;

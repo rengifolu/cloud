@@ -20,7 +20,7 @@ class CoronaVirus extends React.Component {
     //const { pais } = this.state.pais;
     return (
       <div className="Coronavirus">
-        <h1>CoronaVirus!</h1>
+        <h1>CoronaVirus API!</h1>
         <ul>
           {this.state.pais.map(pais => (
             <li>
