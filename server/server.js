@@ -1,19 +1,24 @@
 //server/server.js
-var express = require('express');
-var router = require('./routes/routes.js')
-var path = require('path');
-var bodyParser = require('body-parser');
+var express = require("express");
+var router = require("./routes/routes.js");
+var path = require("path");
+var bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 var app = express();
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, '../client'));
-app.use(express.static(path.join(__dirname, '../client')));
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: false }));
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "../client"));
+app.use(express.static(path.join(__dirname, "../client")));
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
+app.use(cookieParser());
 
-mongoose.connect('mongodb+srv://diego:peru@clustercloud-trmk9.mongodb.net/mycloud?retryWrites=true&w=majority', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(
+  "mongodb+srv://diego:peru@clustercloud-trmk9.mongodb.net/mycloud?retryWrites=true&w=majority",
+  { useUnifiedTopology: true, useNewUrlParser: true }
+);
 
-app.use('/', router);
+app.use("/", router);
 
 module.exports = app;

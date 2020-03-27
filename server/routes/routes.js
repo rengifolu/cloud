@@ -3,6 +3,7 @@ var express = require("express");
 var router = express.Router();
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+const withAuth = require("../middleware");
 
 const secret = "mysecretsshhh";
 
@@ -30,7 +31,13 @@ router.route("/register").post(function(req, res) {
     });
 });
 
-router.route("/login").post(function(req, res) {
+router.route("/login", withAuth).post(function(req, res) {
+  // Cookies that have not been signed
+  console.log("Cookies: ", req.cookies);
+
+  // Cookies that have been signed
+  console.log("Signed Cookies: ", req.signedCookies);
+
   const { email, password } = req.body;
   User.findOne({ email }, function(err, user) {
     if (err) {
@@ -56,7 +63,7 @@ router.route("/login").post(function(req, res) {
           // Issue token
           const payload = { email };
           const token = jwt.sign(payload, secret, {
-            expiresIn: "1h"
+            expiresIn: "1m"
           });
           res.cookie("token", token, { httpOnly: true }).sendStatus(200);
           //res.send("user successfully login!");
