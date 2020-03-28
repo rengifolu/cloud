@@ -8,6 +8,8 @@ import SigIn from "./components/SigIn";
 import Portfolio from "./components/Portfolio";
 import Blog from "./components/Blog";
 import Userloged from "./components/Userloged";
+import withAuth from "./components/withAuth";
+
 export const Routes = () => (
   <Switch>
     <Route exact path="/" component={App} />
@@ -16,7 +18,8 @@ export const Routes = () => (
     <Route exact path="/sigin" component={SigIn} />
     <Route exact path="/portfolio" component={Portfolio} />
     <Route exact path="/blog" component={Blog} />
-    <Route exact path="/userloged" component={Userloged} />
+    {/* ruta protegidas por token */}
+    <Route exact path="/userloged" component={withAuth(Userloged)} />
   </Switch>
 );
 export default Routes;

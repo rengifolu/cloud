@@ -11,6 +11,11 @@ router.get("/", function(req, res) {
   res.render("index");
 });
 
+//comprueba que ruta que lleve esta comprobacion es por que usuario ya se ha logado
+router.get("/checkToken", withAuth, function(req, res) {
+  res.sendStatus(200);
+});
+
 router.route("/register").post(function(req, res) {
   //console.log(req.body);
   var user = new User();
@@ -31,7 +36,7 @@ router.route("/register").post(function(req, res) {
     });
 });
 
-router.route("/login", withAuth).post(function(req, res) {
+router.route("/login").post(function(req, res) {
   // Cookies that have not been signed
   console.log("Cookies: ", req.cookies);
 
@@ -63,7 +68,7 @@ router.route("/login", withAuth).post(function(req, res) {
           // Issue token
           const payload = { email };
           const token = jwt.sign(payload, secret, {
-            expiresIn: "1m"
+            expiresIn: "1h"
           });
           res.cookie("token", token, { httpOnly: true }).sendStatus(200);
           //res.send("user successfully login!");
