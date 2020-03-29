@@ -16,6 +16,10 @@ router.get("/checkToken", withAuth, function(req, res) {
   res.sendStatus(200);
 });
 
+router.get("/userloged", function(req, res) {
+  res.send("Welcome");
+});
+
 router.route("/register").post(function(req, res) {
   //console.log(req.body);
   var user = new User();
@@ -39,7 +43,6 @@ router.route("/register").post(function(req, res) {
 router.route("/login").post(function(req, res) {
   // Cookies that have not been signed
   console.log("Cookies: ", req.cookies);
-
   // Cookies that have been signed
   console.log("Signed Cookies: ", req.signedCookies);
 
