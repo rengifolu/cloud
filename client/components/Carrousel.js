@@ -2,6 +2,9 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "../css/Carrousel.css";
 import imagen from "../../public/descarga.jpg";
+import archivos from "../../public/archivos.jpg";
+import musica from "../../public/musica.jpg";
+import fotos from "../../public/fotos.jpg";
 
 class Carrousel extends React.Component {
   render() {
@@ -11,8 +14,8 @@ class Carrousel extends React.Component {
           <Carousel.Item>
             <img
               className="d-block"
-              src="https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461264-reactJS-Facebook-JavaScript-minimalism-artwork-simple_background-748x421.jpg"
-              // src="holder.js/800x400?text=First slide&bg=373940"
+              //src="https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461264-reactJS-Facebook-JavaScript-minimalism-artwork-simple_background-748x421.jpg"
+              src={archivos}
               alt="First slide"
             />
             <Carousel.Caption>
@@ -23,8 +26,7 @@ class Carrousel extends React.Component {
           <Carousel.Item>
             <img
               className="d-block"
-              //src="https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461264-reactJS-Facebook-JavaScript-minimalism-artwork-simple_background-748x421.jpg"
-              src={imagen}
+              src={musica}
               //src="holder.js/800x400?text=Second slide&bg=282c34"
               alt="Third slide"
             />
@@ -35,12 +37,7 @@ class Carrousel extends React.Component {
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
-            <img
-              className="d-block"
-              src="https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461264-reactJS-Facebook-JavaScript-minimalism-artwork-simple_background-748x421.jpg"
-              //src="holder.js/800x400?text=Third slide&bg=20232a"
-              alt="Third slide"
-            />
+            <img className="d-block" src={fotos} alt="Third slide" />
 
             <Carousel.Caption>
               <h3>Third slide label</h3>
