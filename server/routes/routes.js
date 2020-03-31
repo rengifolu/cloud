@@ -16,7 +16,7 @@ router.get("/checkToken", withAuth, function(req, res) {
   res.sendStatus(200);
 });
 
-router.get("/userloged", function(req, res) {
+router.get("/userloged", withAuth, function(req, res) {
   res.send("Welcome");
 });
 

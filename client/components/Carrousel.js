@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "../css/Carrousel.css";
-//import imagen from '../../public/logo192.png';
+import imagen from "../../public/descarga.jpg";
 
 class Carrousel extends React.Component {
   render() {
@@ -23,8 +23,8 @@ class Carrousel extends React.Component {
           <Carousel.Item>
             <img
               className="d-block"
-              src="https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461264-reactJS-Facebook-JavaScript-minimalism-artwork-simple_background-748x421.jpg"
-              //src={imagen}
+              //src="https://hdwallpaperim.com/wp-content/uploads/2017/08/25/461264-reactJS-Facebook-JavaScript-minimalism-artwork-simple_background-748x421.jpg"
+              src={imagen}
               //src="holder.js/800x400?text=Second slide&bg=282c34"
               alt="Third slide"
             />
