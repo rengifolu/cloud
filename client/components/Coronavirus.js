@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/Coronavirus.css";
+import Flag from "./Flags";
 
 import axios from "axios";
 
@@ -24,6 +25,7 @@ class CoronaVirus extends React.Component {
         <ul>
           {this.state.pais.map(pais => (
             <li>
+              <Flag></Flag>
               Pais : {pais.country} <br />
               Casos : {pais.cases} <br />
               Casos hoy : {pais.todayCases} <br />

@@ -11,7 +11,7 @@ class barra extends React.Component {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="Info" variant="dark">
           <Navbar.Brand as={Link} to="/" exact>
             MyCloud
           </Navbar.Brand>
