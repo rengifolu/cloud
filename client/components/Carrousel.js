@@ -1,7 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "../css/Carrousel.css";
-import imagen from "../../public/descarga.jpg";
 import archivos from "../../public/archivos.jpg";
 import musica from "../../public/musica.jpg";
 import fotos from "../../public/fotos.jpg";
