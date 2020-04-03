@@ -24,8 +24,11 @@ class CoronaVirus extends React.Component {
         <ul>
           {this.state.pais.map(pais => (
             <li>
-              <img src="https://www.countryflags.io/'${pais.countryInfo.iso2}'/shiny/64.png"></img>
-              Paisinfo : {pais.countryInfo.iso2} <br />
+              <img
+                src={`https://www.countryflags.io/${pais.countryInfo.iso2}/shiny/64.png`}
+                alt="Foto de pais"
+              ></img>
+              <br />
               Pais : {pais.country} <br />
               Casos : {pais.cases} <br />
               Casos hoy : {pais.todayCases} <br />
