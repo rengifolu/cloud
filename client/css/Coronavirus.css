@@ -1,4 +1,4 @@
-.Coronavirus {
+/* .Coronavirus {
   background-color: rgb(191, 209, 25);
 }
 
@@ -8,5 +8,9 @@ ul li {
   padding: 20px;
   width: 300px;
   height: 250px;
+  float: left;
+}
+ */
+ul li {
   float: left;
 }
