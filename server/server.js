@@ -16,7 +16,7 @@ app.use(cookieParser());
 
 mongoose.connect(
   "mongodb+srv://diego:peru@clustercloud-trmk9.mongodb.net/mycloud?retryWrites=true&w=majority",
-  { useUnifiedTopology: true, useNewUrlParser: true }
+  { useUnifiedTopology: true, useNewUrlParser: true ,useCreateIndex: true ,useFindAndModify: false}
 );
 
 app.use("/", router);
