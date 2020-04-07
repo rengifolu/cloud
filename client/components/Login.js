@@ -8,7 +8,8 @@ class Login extends React.Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
+      datosUsuario: {}
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -39,6 +40,11 @@ class Login extends React.Component {
       .then(res => {
         if (res.status === 200) {
           this.props.history.push("/userloged");
+          this.setState({
+            datosUsuario: res.data
+            
+          })
+          console.log(JSON.stringify(this.datosUsuario));
         } else {
           const error = new Error(res.error);
           throw error;
@@ -83,7 +89,7 @@ class Login extends React.Component {
               onChange={this.handleTextChange}
             />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={this.onClick}>
+          <Button variant="primary" type="button" onClick={this.onClick}>
             Submit
           </Button>
         </Form>
