@@ -19,7 +19,7 @@ class SigIn extends React.Component {
 
     this.handleTextChange = this.handleTextChange.bind(this);
     this.onClick = this.onClick.bind(this);
-    this.insertRegister = this.insertRegister.bind(this)
+    this.insertRegister = this.insertRegister.bind(this);
   }
   handleTextChange(e) {
     if (e.target.name === "first_name") {
@@ -54,24 +54,31 @@ class SigIn extends React.Component {
   }
 
   insertRegister(e) {
-    console.log('valores :' + e.state.first_name + ' ' + e.state.last_name + ' ' + e.state.user_name + ' ' + e.state.email + ' ' + e.state.password);
-    axios.post('/register',
-      querystring.stringify({
-        first_name: e.state.first_name,
-        last_name: e.state.last_name,
-        user_name: e.state.user_name,
-        email: e.state.email,
-        password: e.state.password
-      }), {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
-    }).then(function (response) {
-      e.setState({
-        messageFromServer: response.data
+    try {
+      //console.log('valores :' + e.state.first_name + ' ' + e.state.last_name + ' ' + e.state.user_name + ' ' + e.state.email + ' ' + e.state.password);
+      axios.post('/register',
+        querystring.stringify({
+          first_name: e.state.first_name,
+          last_name: e.state.last_name,
+          user_name: e.state.user_name,
+          email: e.state.email,
+          password: e.state.password
+        }), {
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      }).then(function (response) {
+        e.setState({
+          messageFromServer: response.data,
+        });
       });
-    });
+      this.props.history.push('/login')
+    } catch (error) {
+
+    }
   }
+
+
 
   handleSubmit(event) {
     console.log('mensaje ');
@@ -81,80 +88,80 @@ class SigIn extends React.Component {
 
 
   render() {
-      return (
-        <div className="SigIn">
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Group controlId="formBasicSurName">
-              <Form.Label>Surname</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your surname"
-                value={this.state.first_name}
-                name="first_name"
-                onChange={this.handleTextChange}
-              />
-            </Form.Group>
+    return (
+      <div className="SigIn">
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group controlId="formBasicSurName">
+            <Form.Label>Surname</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter your surname"
+              value={this.state.first_name}
+              name="first_name"
+              onChange={this.handleTextChange}
+            />
+          </Form.Group>
 
-            <Form.Group controlId="formBasicName">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your name"
-                value={this.state.last_name}
-                name="last_name"
-                onChange={this.handleTextChange}
-              />
-            </Form.Group>
+          <Form.Group controlId="formBasicName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter your name"
+              value={this.state.last_name}
+              name="last_name"
+              onChange={this.handleTextChange}
+            />
+          </Form.Group>
 
-            <Form.Group controlId="formBasicUserName">
-              <Form.Label>User Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter a user name"
-                value={this.state.user_name}
-                name="user_name"
-                onChange={this.handleTextChange}
-              />
-              {/* <Form.Text className="text-muted">
+          <Form.Group controlId="formBasicUserName">
+            <Form.Label>User Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter a user name"
+              value={this.state.user_name}
+              name="user_name"
+              onChange={this.handleTextChange}
+            />
+            {/* <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text> */}
-            </Form.Group>
+          </Form.Group>
 
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={this.state.email}
-                name="email"
-                onChange={this.handleTextChange}
-              />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Enter email"
+              value={this.state.email}
+              name="email"
+              onChange={this.handleTextChange}
+            />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
             </Form.Text>
-            </Form.Group>
+          </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={this.state.password}
-                name="password"
-                onChange={this.handleTextChange}
-              />
-            </Form.Group>
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={this.onClick}
-            >
-              Submit
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              value={this.state.password}
+              name="password"
+              onChange={this.handleTextChange}
+            />
+          </Form.Group>
+          <Button
+            variant="primary"
+            type="button"
+            onClick={this.onClick}
+          >
+            Submit
           </Button>
           <h1>{this.state.messageFromServer}</h1>
-          </Form>
-        </div>
-      );
+        </Form>
+      </div>
+    );
   }
 }
 
