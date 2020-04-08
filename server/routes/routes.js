@@ -73,9 +73,12 @@ router.route("/login").post(function(req, res) {
           const token = jwt.sign(payload, secret, {
             expiresIn: "1h"
           });
-          res.cookie("token", token, { httpOnly: true }).sendStatus(200);
-          //res.send("user successfully login!");
+          const userJson = user.toJSON()
+          //res.cookie("token", token, { httpOnly: true }).sendStatus(200);
+          res.cookie("token", token, { httpOnly: true }).send({user: userJson});
+          //res.send(userJson);
           console.log("login");
+          console.log(user.toJSON())
         }
       });
     }

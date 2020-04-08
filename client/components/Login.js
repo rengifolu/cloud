@@ -9,7 +9,7 @@ class Login extends React.Component {
     this.state = {
       email: "",
       password: "",
-      datosUsuario: {}
+      datosUsuario:{}
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -38,17 +38,21 @@ class Login extends React.Component {
     axios
       .post("./login", payload)
       .then(res => {
+        console.log('este 1 : ' , res.status);
+        console.log('este 2 : ' , res.data);
+        console.log('este 3 : ' , res.data.user);
+        console.dir('este 4 : ' , res.data.json);
         if (res.status === 200) {
-          this.props.history.push("/userloged");
           this.setState({
-            datosUsuario: res.data
-            
-          })
-          console.log(JSON.stringify(this.datosUsuario));
+            datosUsuario: res.data.user
+          });
+          this.props.history.push("/userloged");
+          console.log('este 5 : ' , this.state.datosUsuario);
         } else {
           const error = new Error(res.error);
           throw error;
         }
+        console.log('este 6 : ' , this.state.datosUsuario);
       })
       .catch(err => {
         console.error(err);
