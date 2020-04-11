@@ -3,9 +3,13 @@ import { Form, Button } from "react-bootstrap";
 import "../css/Login.css";
 import axios from "axios";
 
+// importamos connect para conectar componente con Store Global
+import {Connect} from 'react-redux'
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       email: "",
       password: "",
@@ -102,4 +106,11 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+
+const mapStateToProps = (state) =>{
+  return {
+    state
+  }
+}
+
+export default Connect(mapStateToProps)(Login);

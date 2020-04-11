@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Carrousel from "./Carrousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/App.css";
+
+
 //import logo from './nubenu.jpg';
 
 class App extends Component {
