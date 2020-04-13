@@ -1,28 +1,13 @@
-import {createStore} from 'redux'
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
-const initialState = 0
+//importa inde  combineReducer
+import rootReducer from "./redux/reducers";
 
+/* store.subscribe(() => {
+  console.log(store.getState());
+}); */
 
-//reducer
-function counter (state = initialState , action) {
-    console.log(action)
-
-    if(action.type==='INCREMENT'){
-        return state +1
-        }
-        return state
-}
-
-
-const store = createStore(counter)
-
-console.log(store.getState())
-
-//action
-store.dispatch({
-    type:'INCREMENT'
-})
-
-console.log(store.getState())
-
-export default store
+//console.log(store.getState());
+const store = createStore(rootReducer, applyMiddleware(thunk));
+export default store;

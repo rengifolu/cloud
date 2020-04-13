@@ -38,7 +38,7 @@ class Login extends React.Component {
   };
 
   handleClick(e) {
-    //console.log(this.props);
+    console.log(this.props);
     this.props
       .doLogin(this.state)
       .then((res) => this.props.history.push("/userloged"))
@@ -60,6 +60,11 @@ class Login extends React.Component {
     const { errors, email, password, isLoading } = this.state;
     return (
       <div className="Login">
+        <h1>{this.props.state.counter}</h1>
+        <button onClick={this.props.increment}>+</button>
+        <button onClick={this.props.decrement}>-</button>
+        <button onClick={this.props.doLogin}>-</button>
+
         {errors.message && (
           <div className="alert alert-danger">{errors.message}</div>
         )}

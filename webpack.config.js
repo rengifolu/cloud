@@ -5,7 +5,7 @@ module.exports = {
   entry: "./client/index.js",
   output: {
     path: path.join(__dirname, "client"),
-    filename: "bundle.js"
+    filename: "bundle.js",
   },
   module: {
     rules: [
@@ -15,21 +15,17 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           presets: ["@babel/preset-env", "@babel/preset-react"],
-          "plugins": [
-              [
-                "@babel/plugin-proposal-class-properties"
-              ]
-          ]
-        }
+          plugins: [["@babel/plugin-proposal-class-properties"]],
+        },
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader!sass-loader"
+        loader: "style-loader!css-loader!sass-loader",
       },
       {
         test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
-        loader: "url-loader?limit=100000"
-      }
-    ]
-  }
+        loader: "url-loader?limit=100000",
+      },
+    ],
+  },
 };
