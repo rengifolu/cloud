@@ -3,11 +3,24 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  NavLink
+  NavLink,
 } from "react-router-dom";
 import { Navbar, NavDropdown, Nav } from "react-bootstrap";
+import { connect } from "react-redux";
+import { doLogOut } from "../redux/actions/postsAction";
 
 class barra extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick = (e) => {
+    //console.log(this.props);
+    this.props.doLogOut();
+  };
+
   render() {
     return (
       <div>
@@ -42,6 +55,11 @@ class barra extends React.Component {
               </NavDropdown>
             </Nav>
             <Nav>
+              {this.props.state.userLogin.isAuthenticated ? (
+                <Nav.Link as={Link} to="/login" exact onClick={this.onClick}>
+                  Logout
+                </Nav.Link>
+              ) : null}
               <Nav.Link as={Link} to="/login" exact>
                 Login
               </Nav.Link>
@@ -57,4 +75,16 @@ class barra extends React.Component {
   }
 }
 
-export default barra;
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    doLogOut: () => dispatch(doLogOut()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(barra);

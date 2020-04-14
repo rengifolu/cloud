@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import counter from "./counterReducer";
+import contador from "./counterReducer";
 import userLogin from "./postsReducer";
 
 export default combineReducers({
-  counter,
+  contador,
   userLogin,
 });

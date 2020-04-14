@@ -1,10 +1,11 @@
 import axios from "axios";
 
-export const FETCH_POSTS_REQUEST = "FETCH_POSTS_REQUEST";
-export const FETCH_POSTS_SUCCES = "FETCH_POSTS_SUCCES";
-export const FETCH_POSTS_ERROR = "FETCH_POSTS_ERROR";
-
-//import { AUTH_LOGIN, AUTH_LOGOUT } from "../reducers/postsReducer";
+import {
+  FETCH_POSTS_REQUEST,
+  FETCH_POSTS_SUCCES,
+  FETCH_POSTS_ERROR,
+  AUTH_LOGOUT,
+} from "../reducers/postsReducer";
 
 export function request() {
   return {
@@ -12,11 +13,11 @@ export function request() {
   };
 }
 export function succes(response) {
+  console.log("desde succes");
+  console.log(response);
   return {
     type: FETCH_POSTS_SUCCES,
-    payload: {
-      response,
-    },
+    user: response,
   };
 }
 export function erro(error) {
@@ -28,13 +29,12 @@ export function erro(error) {
 
 export const doLogin = ({ email, password }) => {
   return (dispatch) => {
-    //console.log(dispatch);
     dispatch(request());
     return axios
       .post("./login", { email: email, password: password })
       .then((response) => {
         if (response.status === 200) {
-          dispatch(succes(response));
+          dispatch(succes(response.data.user));
           console.log("desde dispatch");
           console.log(response.data.user);
         } else {
@@ -48,3 +48,7 @@ export const doLogin = ({ email, password }) => {
       });
   };
 };
+
+export const doLogOut = () => ({
+  type: AUTH_LOGOUT,
+});

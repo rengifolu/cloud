@@ -5,12 +5,12 @@ import "../css/Login.css";
 
 // importamos connect para conectar componente con Store Global
 import { connect } from "react-redux";
-
+import { increment, decrement } from "../redux/actions/counterAction";
 import { doLogin } from "../redux/actions/postsAction";
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    //console.log(props);
     this.state = {
       email: "",
       password: "",
@@ -60,6 +60,10 @@ class Login extends React.Component {
     const { errors, email, password, isLoading } = this.state;
     return (
       <div className="Login">
+        <h1>{this.props.state.contador}</h1>
+        <button onClick={this.props.increment}>+</button>
+        <button onClick={this.props.decrement}>-</button>
+
         {errors.message && (
           <div className="alert alert-danger">{errors.message}</div>
         )}
@@ -106,22 +110,13 @@ class Login extends React.Component {
 const mapStateToProps = (state) => {
   return {
     state: state,
-    //contador: state.counter,
-  };
-};
-/*
-const mapDispatchToProps = (dispatch) => {
-  return {
-    /*      increment: () => dispatch(increment()),
-    decrement: () => dispatch(decrement()),  
-    doLogin: (state) => dispatch(doLogin(state)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login); */
-
 const mapDispatchToProps = (dispatch) => {
   return {
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement()),
     doLogin: (state) => dispatch(doLogin(state)),
   };
 };

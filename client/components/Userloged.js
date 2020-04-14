@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 class Userloged extends React.Component {
   constructor(props) {
     super(props);
+    console.log("desdecconstructor useerloged");
     console.log(props);
     this.state = {
       message: "Loading...",
@@ -22,12 +23,15 @@ class Userloged extends React.Component {
   render() {
     return (
       <div className="Userloged">
-        <h1>Userloged</h1>
         <p>{this.state.message}</p>
+        <p>
+          {this.props.state.userLogin.user.first_name}{" "}
+          {this.props.state.userLogin.user.last_name}
+        </p>
 
-        <p>{this.props.state.counter}</p>
-        {/* <h1>{this.props.state.userlogin.posts.[0]}</h1> */}
-        <h1>{this.props.state.payload.response.data.user.email}</h1>
+        <p>{this.props.state.userLogin.user.email}</p>
+
+        {/* <h1>1 : {this.props.state.userLogin.isAuthenticated.toString()}</h1> */}
       </div>
     );
   }
@@ -36,24 +40,11 @@ class Userloged extends React.Component {
 const mapStateToProps = (state) => {
   return {
     state: state,
-    //contador: state.counter,
-  };
-};
-/*
-const mapDispatchToProps = (dispatch) => {
-  return {
-    /*      increment: () => dispatch(increment()),
-    decrement: () => dispatch(decrement()),  
-    doLogin: (state) => dispatch(doLogin(state)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login); */
-
 const mapDispatchToProps = (dispatch) => {
-  return {
-    //doLogin: (state) => dispatch(doLogin(state)),
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Userloged);

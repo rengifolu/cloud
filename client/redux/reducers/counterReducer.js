@@ -6,7 +6,7 @@ export const DECREMENT = "DECREMENT";
 
 //reducer
 function counter(state = initialState, action) {
-  console.log(action);
+  //console.log(action);
 
   switch (action.type) {
     case INCREMENT:

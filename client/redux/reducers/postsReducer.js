@@ -1,14 +1,13 @@
-import {
-  FETCH_POSTS_REQUEST,
-  FETCH_POSTS_SUCCES,
-  FETCH_POSTS_ERROR,
-} from "./postsReducer";
-
 const initialState = {
-  post: [],
-  isFetching: false,
+  isAuthenticated: false,
+  user: {},
   error: null,
 };
+
+export const FETCH_POSTS_REQUEST = "FETCH_POSTS_REQUEST";
+export const FETCH_POSTS_SUCCES = "FETCH_POSTS_SUCCES";
+export const FETCH_POSTS_ERROR = "FETCH_POSTS_ERROR";
+export const AUTH_LOGOUT = "AUTH_LOGOUT";
 
 const posts = (state = initialState, action) => {
   console.log(action.type);
@@ -16,19 +15,24 @@ const posts = (state = initialState, action) => {
     case FETCH_POSTS_REQUEST:
       return {
         ...state, // Preserve states that are unchanged
-        isFetching: true,
+        isAuthenticated: true,
       };
     case FETCH_POSTS_SUCCES:
       return {
         ...state, // Preserve states that are unchanged
-        isFetching: false,
-        post: action.payload.posts,
+        isAuthenticated: true,
+        user: action.user,
       };
     case FETCH_POSTS_ERROR:
       return {
         ...state, // Preserve states that are unchanged
-        isFetching: false,
-        error: action.payload.error,
+        isAuthenticated: false,
+        error: action.error,
+      };
+    case AUTH_LOGOUT:
+      return {
+        ...state, // Preserve states that are unchanged
+        isAuthenticated: false,
       };
     default:
       return state;
