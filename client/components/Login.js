@@ -89,6 +89,7 @@ class Login extends React.Component {
               type="password"
               placeholder="Password"
               name="password"
+              autocomplete="off"
               value={password}
               onChange={this.handleTextChange}
             />
