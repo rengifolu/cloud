@@ -4,7 +4,6 @@ import Carrousel from "./Carrousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/App.css";
 
-
 //import logo from './nubenu.jpg';
 
 class App extends Component {
@@ -15,7 +14,7 @@ class App extends Component {
           <h1 className="App-title">myCloud-</h1>
           {/* <img src={logo} alt=''/> */}
         </header>
-        <p className="App-intro">To get started Login-.</p>
+        <p className="App-intro">To get started r</p>
         <Carrousel></Carrousel>
       </div>
     );

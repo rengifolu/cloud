@@ -19,6 +19,9 @@ class barra extends React.Component {
   onClick = (e) => {
     //console.log(this.props);
     this.props.doLogOut();
+
+    var x = document.cookie;
+    console.log(x);
   };
 
   render() {

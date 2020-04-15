@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 class Userloged extends React.Component {
   constructor(props) {
     super(props);
-    console.log("desdecconstructor useerloged");
+    console.log("desde constructor useerloged");
     console.log(props);
     this.state = {
       message: "Loading...",
@@ -16,6 +16,8 @@ class Userloged extends React.Component {
 
   componentDidMount(e) {
     axios.get("/userloged").then((res) => {
+      console.log("respuesta de userloged with auth");
+      console.log(res.data);
       e.setState({ message: res.data });
     });
   }
@@ -28,9 +30,7 @@ class Userloged extends React.Component {
           {this.props.state.userLogin.user.first_name}{" "}
           {this.props.state.userLogin.user.last_name}
         </p>
-
         <p>{this.props.state.userLogin.user.email}</p>
-
         {/* <h1>1 : {this.props.state.userLogin.isAuthenticated.toString()}</h1> */}
       </div>
     );
