@@ -13,10 +13,10 @@ class barra extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.onClick = this.onClick.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
-  onClick = (e) => {
+  logout = (e) => {
     //console.log(this.props);
     this.props.doLogOut();
 
@@ -59,7 +59,7 @@ class barra extends React.Component {
             </Nav>
             <Nav>
               {this.props.state.userLogin.isAuthenticated ? (
-                <Nav.Link as={Link} to="/login" exact onClick={this.onClick}>
+                <Nav.Link as={Link} to="/login" exact onClick={this.logout}>
                   Logout
                 </Nav.Link>
               ) : null}

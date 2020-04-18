@@ -36,7 +36,9 @@ export const doLogin = ({ email, password }) => {
         if (response.status === 200) {
           dispatch(succes(response.data.user));
           console.log("desde dispatch");
+          localStorage.setItem("user", JSON.stringify(response.data.user));
           console.log(response.data.user);
+          sessionStorage.setItem("usuario", "555");
         } else {
           //revisar
           const error = new Error(response.error);
@@ -49,6 +51,19 @@ export const doLogin = ({ email, password }) => {
   };
 };
 
-export const doLogOut = () => ({
-  type: AUTH_LOGOUT,
-});
+export const doLogOut = () => {
+  return (dispatch) => {
+    console.log("desde dispborrando localstorage ");
+    localStorage.removeItem("user");
+    //SetAuthToken(false);
+    //al no pasarle nada como parametro los atributos del usuario se ponen a null
+    dispatch(setCurrentUser({}));
+  };
+};
+
+export function setCurrentUser(user) {
+  return {
+    type: AUTH_LOGOUT,
+    user,
+  };
+}

@@ -3,7 +3,8 @@ var express = require("express");
 var router = express.Router();
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const withAuth = require("../middleware");
+const verifyToken = require("../verifyToken");
+const authConfig = require("../auth/config");
 
 const secret = "mysecretsshhh";
 
@@ -12,11 +13,11 @@ router.get("/", function (req, res) {
 });
 
 //comprueba que ruta que lleve esta comprobacion es por que usuario ya se ha logado
-router.get("/checkToken", withAuth, function (req, res) {
+router.get("/checkToken", verifyToken, function (req, res) {
   res.sendStatus(200);
 });
 
-router.get("/userloged", withAuth, function (req, res) {
+router.get("/userloged", verifyToken, function (req, res) {
   res.send("Welcome");
 });
 
@@ -41,7 +42,7 @@ router.route("/register").post(function (req, res) {
 });
 
 router.route("/login").post(function (req, res) {
-  // Cookies that have not been signed
+  console.error("Cookies: ");
   console.log("Cookies: ", req.cookies);
   // Cookies that have been signed
   console.log("Signed Cookies: ", req.signedCookies);
@@ -70,7 +71,7 @@ router.route("/login").post(function (req, res) {
         } else {
           // Issue token
           const payload = { email };
-          const token = jwt.sign(payload, secret, {
+          const token = jwt.sign(payload, authConfig.secret, {
             expiresIn: "1h",
           });
           const userJson = user.toJSON();

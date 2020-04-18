@@ -1,15 +1,20 @@
+const authConfig = require("./auth/config");
 /* Esta función de middleware buscará el token en 
    las cookies de la solicitud y luego lo validará. 
 */
 const jwt = require("jsonwebtoken");
-const secret = "mysecretsshhh";
 
-const withAuth = function (req, res, next) {
+const verifyToken = function (req, res, next) {
+  console.log("req.headers.authorization : ", req.headers.authorization);
+  console.log("req.headers.Authorization): ", req.headers.Authorization);
+
   const token = req.cookies.token;
   if (!token) {
+    console.log("no tiene token ");
     res.status(401).send("Unauthorized: No token provided");
   } else {
-    jwt.verify(token, secret, function (err, decoded) {
+    console.log("tiene token Autorizado");
+    jwt.verify(token, authConfig.secret, function (err, decoded) {
       if (err) {
         res.status(401).send("Unauthorized: Invalid token");
       } else {
@@ -20,4 +25,4 @@ const withAuth = function (req, res, next) {
     });
   }
 };
-module.exports = withAuth;
+module.exports = verifyToken;
