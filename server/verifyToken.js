@@ -5,9 +5,6 @@ const authConfig = require("./auth/config");
 const jwt = require("jsonwebtoken");
 
 const verifyToken = function (req, res, next) {
-  console.log("req.headers.authorization : ", req.headers.authorization);
-  console.log("req.headers.Authorization): ", req.headers.Authorization);
-
   const token = req.cookies.token;
   if (!token) {
     console.log("no tiene token ");

@@ -51,13 +51,26 @@ export const doLogin = ({ email, password }) => {
   };
 };
 
-export const doLogOut = () => {
+/* export const doLogOut = () => {
   return (dispatch) => {
     console.log("desde dispborrando localstorage ");
     localStorage.removeItem("user");
     //SetAuthToken(false);
     //al no pasarle nada como parametro los atributos del usuario se ponen a null
     dispatch(setCurrentUser({}));
+  };
+}; */
+
+export const doLogOut = () => {
+  return (dispatch) => {
+    return axios
+      .get("./logout")
+      .then((response) => {
+        dispatch(setCurrentUser({}));
+      })
+      .catch((error) => {
+        dispatch(erro(error));
+      });
   };
 };
 

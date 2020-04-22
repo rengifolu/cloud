@@ -11,7 +11,7 @@ function initCookie(app) {
   app.use(
     session({
       key: "user_sid",
-      secret: "authConfig.secret",
+      secret: authConfig.secret,
       resave: false,
       saveUninitialized: true,
       cookie: {
@@ -31,13 +31,18 @@ function initCookie(app) {
     //asi garantizamos que hayan inicado sesion previamente
     //console.log(req.session);
     //console.log(req.cookies);
-    console.log("sessionID : ", req.sessionID);
 
-    console.log("initcookies");
+    //console.log("initcookies");
+    //console.log("authConfig.sesionUsuario", authConfig.sesionUsuario);
+    /*     console.log(
+      "authConfig.sesionUsuario.email",
+      authConfig.sesionUsuario.email
+    ); */
     //console.log("req.cookies.token", req.cookies.token);
-    //console.log("req.session", req.session);
+    console.log("req.sessionID", req.sessionID);
+    console.log("req.session ", req.session);
 
-    if (req.cookies.token && !req.session) {
+    if (req.cookies.token && !authConfig.sesionUsuario) {
       console.log("limpiadas cookies");
       //res.clearCookie("user_sid");
       res.clearCookie("token");

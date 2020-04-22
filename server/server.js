@@ -3,11 +3,41 @@ var express = require("express");
 var router = require("./routes/routes.js");
 var path = require("path");
 var bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const authConfig = require("./auth/config");
+const session = require("express-session");
 
 const initCookie = require("./middleware/initCookie");
 
 var app = express();
-initCookie(app);
+app.use(cookieParser());
+//initCookie(app);
+
+////////////////sesion//////////////
+app.use(
+  session({
+    key: "user",
+    secret: authConfig.secret,
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+      expires: authConfig.expireTime,
+    },
+  })
+);
+
+app.use((req, res, next) => {
+  console.log("req.sessionID", req.sessionID);
+  console.log("req.session ", req.session);
+
+  if (req.cookies.token && !req.session.user) {
+    console.log("limpiadas cookies");
+    //res.clearCookie("user_sid");
+    res.clearCookie("token");
+  }
+  next();
+});
+/////////////////////////////////////
 var mongoose = require("mongoose");
 
 app.set("view engine", "ejs");

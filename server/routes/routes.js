@@ -6,8 +6,6 @@ const jwt = require("jsonwebtoken");
 const verifyToken = require("../verifyToken");
 const authConfig = require("../auth/config");
 
-const secret = "mysecretsshhh";
-
 router.get("/", function (req, res) {
   res.render("index");
 });
@@ -69,6 +67,9 @@ router.route("/login").post(function (req, res) {
             error: "Incorrect email or password",
           });
         } else {
+          authConfig.sess = req.session;
+          authConfig.sess.email = req.body.email;
+
           // Issue token
           const payload = { email };
           const token = jwt.sign(payload, authConfig.secret, {
@@ -86,6 +87,23 @@ router.route("/login").post(function (req, res) {
       });
     }
   });
+});
+
+router.get("/logout", (req, res) => {
+  console.log("sessionID a borrar : ", req.sessionID);
+  authConfig.sess.destroy((err) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("deslogado en server");
+    //res.redirect("index"); con este no funcionaba
+    res.render("index");
+  });
+
+  //res.clearCookie("token");
+  console.log("session que sigue viva : ", req.sessionID);
+  console.log("sessionID que sigue viva : ", req.session);
+  console.log("sessionuser : ", authConfig.sess);
 });
 
 module.exports = router;
