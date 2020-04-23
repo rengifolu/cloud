@@ -73,7 +73,7 @@ router.route("/login").post(function (req, res) {
           // Issue token
           const payload = { email };
           const token = jwt.sign(payload, authConfig.secret, {
-            expiresIn: "1h",
+            expiresIn: authConfig.expireTime,
           });
           const userJson = user.toJSON();
           //res.cookie("token", token, { httpOnly: true }).sendStatus(200);

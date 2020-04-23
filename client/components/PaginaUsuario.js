@@ -3,7 +3,7 @@ import "../css/Userloged.css";
 import axios from "axios";
 import { connect } from "react-redux";
 
-class Userloged extends React.Component {
+class PaginaUsuario extends React.Component {
   constructor(props) {
     super(props);
     console.log("desde constructor useerloged");
@@ -14,13 +14,7 @@ class Userloged extends React.Component {
     this.componentDidMount = this.componentDidMount(this);
   }
 
-  componentDidMount(e) {
-    // axios.get("/userloged").then((res) => {
-    //   console.log("respuesta de userloged with auth");
-    //   console.log(res.data);
-    //   e.setState({ message: res.data });
-    // });
-  }
+  componentDidMount(e) {}
 
   render() {
     return (
@@ -47,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Userloged);
+export default connect(mapStateToProps, mapDispatchToProps)(PaginaUsuario);
