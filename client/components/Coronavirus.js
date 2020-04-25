@@ -12,7 +12,9 @@ class CoronaVirus extends React.Component {
     };
   }
   componentDidMount() {
-    axios.get(`https://corona.lmao.ninja/countries`).then(res => {
+    //https://api.covid19api.com/summary
+    //https://corona.lmao.ninja/countries
+    axios.get(`https://coronavirus-19-api.herokuapp.com/countries`).then(res => {
       const pais = res.data;
       this.setState({ pais });
     });

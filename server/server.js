@@ -36,6 +36,8 @@ app.use((req, res, next) => {
 
   if (req.cookies.token && !req.session.email) {
     console.log("limpiadas cookies");
+    var d = new Date();
+console.log(d.getDate())
     //res.clearCookie("user_sid");
     res.clearCookie("user");
     res.clearCookie("token");

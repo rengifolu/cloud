@@ -5,6 +5,7 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("../verifyToken");
 const authConfig = require("../auth/config");
+const imagenes = require("../controllers/imagenes");
 
 router.get("/", function (req, res) {
   res.render("index");
@@ -16,7 +17,15 @@ router.get("/checkToken", verifyToken, function (req, res) {
 });
 
 router.get("/userloged", verifyToken, function (req, res) {
-  res.send("Welcome");
+  authConfig.sess = req.session;
+  console.log("desde /userloged " , authConfig.sess.email)
+  if(authConfig.sess.email) {
+    res.send(`<h1>Hello ${authConfig.sess.email} </h1><br>`);
+  }
+  else {
+      res.send('<h1>Please login first.</h1>');
+  }
+  
 });
 
 router.route("/register").post(function (req, res) {
@@ -91,7 +100,7 @@ router.route("/login").post(function (req, res) {
 
 router.get("/logout", (req, res) => {
   console.log("sessionID a borrar : ", req.sessionID);
-  authConfig.sess.destroy((err) => {
+  req.session.destroy((err) => {
     if (err) {
       return console.log(err);
     }
@@ -100,10 +109,19 @@ router.get("/logout", (req, res) => {
     res.render("index");
   });
 
-  //res.clearCookie("token");
+  res.clearCookie("token");
   console.log("session que sigue viva : ", req.sessionID);
   console.log("sessionID que sigue viva : ", req.session);
   console.log("sessionuser : ", authConfig.sess);
 });
+
+
+/* router.get('/imagenes',
+verifyToken,
+imagenes.list); */
+
+
+router.route("/login").get(imagenes.list);
+
 
 module.exports = router;

@@ -15,11 +15,11 @@ class Userloged extends React.Component {
   }
 
   componentDidMount(e) {
-    // axios.get("/userloged").then((res) => {
-    //   console.log("respuesta de userloged with auth");
-    //   console.log(res.data);
-    //   e.setState({ message: res.data });
-    // });
+    axios.get("/userloged").then((res) => {
+      console.log("respuesta de userloged with auth");
+      console.log(res.data);
+      e.setState({ message: res.data });
+    });
   }
 
   render() {
