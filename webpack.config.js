@@ -11,11 +11,13 @@ module.exports = {
     rules: [
       {
         test: /.jsx?$/,
+        //loader: "react-hot-loader",
         loader: "babel-loader",
+        //loaders: ["react-hot", "babel-loader"],
         exclude: /node_modules/,
         query: {
           presets: ["@babel/preset-env", "@babel/preset-react"],
-          plugins: [["@babel/plugin-proposal-class-properties"]],
+          plugins: ["react-hot-loader/babel","@babel/plugin-proposal-class-properties"],
         },
       },
       {

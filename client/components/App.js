@@ -14,7 +14,7 @@ class App extends Component {
           <h1 className="App-title">myCloud-</h1>
           {/* <img src={logo} alt=''/> */}
         </header>
-        <p className="App-intro">To get started r</p>
+        <p className="App-intro">To  get fgstarted</p>
         <Carrousel></Carrousel>
       </div>
     );

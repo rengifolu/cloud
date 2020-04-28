@@ -84,7 +84,7 @@ class Login extends React.Component {
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Passwordooo</Form.Label>
+            <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
               placeholder="Password"

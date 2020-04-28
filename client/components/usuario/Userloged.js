@@ -1,7 +1,9 @@
 import React from "react";
-import "../css/Userloged.css";
+import "../../css/Userloged.css";
 import axios from "axios";
 import { connect } from "react-redux";
+import Imagen from "../../components/usuario/Imagen";
+import Video from "../../components/usuario/Video";
 
 class Userloged extends React.Component {
   constructor(props) {
@@ -31,6 +33,9 @@ class Userloged extends React.Component {
           {this.props.state.userLogin.user.last_name}
         </p>
         <p>{this.props.state.userLogin.user.email}</p>
+
+        <Imagen></Imagen>
+        <Video></Video>
         {/* <h1>1 : {this.props.state.userLogin.isAuthenticated.toString()}</h1> */}
       </div>
     );

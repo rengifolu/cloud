@@ -7,7 +7,7 @@ import Coronavirus from "./components/Coronavirus";
 import SigIn from "./components/SigIn";
 import Portfolio from "./components/Portfolio";
 import Blog from "./components/Blog";
-import Userloged from "./components/Userloged";
+import Userloged from "./components/usuario/Userloged";
 import withAuth from "./components/withAuth";
 
 export const Routes = () => (

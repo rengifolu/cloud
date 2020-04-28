@@ -36,9 +36,9 @@ export const doLogin = ({ email, password }) => {
         if (response.status === 200) {
           dispatch(succes(response.data.user));
           console.log("desde dispatch");
-          localStorage.setItem("user", JSON.stringify(response.data.user));
-          console.log(response.data.user);
-          sessionStorage.setItem("usuario", "555");
+          //localStorage.setItem("user", JSON.stringify(response.data.user));
+          //console.log(response.data.user);
+          //sessionStorage.setItem("usuario", "555");
         } else {
           //revisar
           const error = new Error(response.error);
@@ -67,6 +67,7 @@ export const doLogOut = () => {
       .get("./logout")
       .then((response) => {
         dispatch(setCurrentUser({}));
+        localStorage.removeItem('state');
       })
       .catch((error) => {
         dispatch(erro(error));

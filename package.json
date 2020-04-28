@@ -15,6 +15,7 @@
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "immutable": "^4.0.0-rc.12",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.4",
     "nodemon": "^2.0.2",
@@ -31,7 +32,7 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "npm run webpack && nodemon --exec babel-node -- bin/www",
+    "start": "npm run webpack --hot --inline && nodemon --exec babel-node -- bin/www",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -63,7 +64,7 @@
     "install": "^0.13.0",
     "node-sass": "^4.13.1",
     "npm": "^6.14.2",
-    "react-hot-loader": "^4.5.3",
+    "react-hot-loader": "^4.12.20",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
     "webpack": "^4.42.1",
