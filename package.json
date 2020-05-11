@@ -20,7 +20,7 @@
     "mongoose": "^5.9.4",
     "nodemon": "^2.0.2",
     "react": "^16.13.0",
-    "react-bootstrap": "^1.0.0-beta.17",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.0",
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.0",
@@ -32,7 +32,7 @@
   },
   "scripts": {
     "webpack": "webpack",
-    "start": "npm run webpack --hot --inline && nodemon --exec babel-node -- bin/www",
+    "start": "npm run webpack && nodemon --exec babel-node -- bin/www",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
