@@ -3,10 +3,12 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var imageSchema = new Schema({
-  img: {
-    data: Buffer,
-    contentType: String,
-  },
+  name:String,
+  size: Number,
+  imgUrl:String,
+  description:String
+},{
+  timestamps:true
 });
 
 module.exports = mongoose.model("Image", imageSchema);

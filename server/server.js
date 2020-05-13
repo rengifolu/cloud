@@ -28,16 +28,16 @@ app.use(
 
 app.use((req, res, next) => {
   //console.log("req.sessionID", req.sessionID);
-  console.log("req.session actual", req.session);
-  console.log("req.session id", req.sessionID);
-  console.log("req.cookies.token ", req.cookies.token);
-  console.log("req.cookies.user ", req.cookies.user);
-  console.log("req.session.email ", req.session.email);
+  // console.log("req.session actual", req.session);
+  // console.log("req.session id", req.sessionID);
+  // console.log("req.cookies.token ", req.cookies.token);
+  // console.log("req.cookies.user ", req.cookies.user);
+  // console.log("req.session.email ", req.session.email);
 
   if (req.cookies.token && !req.session.email) {
     console.log("limpiadas cookies");
     var d = new Date();
-console.log(d.getDate())
+    console.log(d.getDate())
     //res.clearCookie("user_sid");
     res.clearCookie("user");
     res.clearCookie("token");

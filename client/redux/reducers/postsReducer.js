@@ -26,7 +26,7 @@ const posts = (state = initialState, action) => {
     case FETCH_POSTS_ERROR:
       return {
         ...state, // Preserve states that are unchanged
-        isAuthenticated: false,
+        isAuthenticated: true,
         error: action.error,
       };
     case AUTH_LOGOUT:

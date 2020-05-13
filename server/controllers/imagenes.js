@@ -3,6 +3,30 @@ const Image = require('../models/Image')
 //const Order = require('../models').Orders;
 
 module.exports = {
+  //esta funcion la manejamos como promesa
+  async addImage(req,res){
+    try {
+      const {
+        name,
+        size,
+        description
+      }=req.body
+
+      const image = Image({
+        name,
+        size,
+        description
+      })
+
+      const imagenStored = await image.save()
+      res.status(201).send({imagenStored})
+      //res.status(201).send({succes:true})
+    } catch (error) {
+      
+    }
+  },
+
+
   create(req, res) {
       const {name, email, phone, message} = req.body;
       return Image

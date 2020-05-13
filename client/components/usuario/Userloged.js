@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 
 
-import BotonHomeUsuario from "../../components/usuario/BotonHomeUsuario";
+ 
 
 
 import "../../css/BotonHomeUsuario.css"
@@ -60,7 +60,7 @@ class Userloged extends React.Component {
       case 'Nota':
         return this.props.history.push("/"+e.target.value.toLowerCase());
       default:
-        return 'foo';
+        return 'default';
     }
 
 

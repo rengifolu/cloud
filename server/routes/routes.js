@@ -5,7 +5,26 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const verifyToken = require("../verifyToken");
 const authConfig = require("../auth/config");
-const imagenes = require("../controllers/imagenes");
+//const imagenes = require("../controllers/imagenes");
+
+var upload = require('../middleware/storage')
+var {addImage} = require('../controllers/imagenes')
+var {addVideo} = require('../controllers/videoController')
+var {addFile} = require('../controllers/fileController')
+var {addFileMusic} = require('../controllers/fileMusicController')
+
+//peticion para subir 1 imagen
+router.post("/image", verifyToken, upload.single('image'),addImage);
+
+
+//peticion para subir 1 video
+router.post("/video", verifyToken, upload.single('video'),addVideo);
+
+// //peticion para subir 1 file
+router.post("/file", verifyToken, upload.single('file'),addFile);
+
+// //peticion para subir 1 fileMusic
+ router.post("/fileMusic", verifyToken, upload.single('fileMusic'),addFileMusic);
 
 router.get("/", function (req, res) {
   res.render("index");
@@ -121,7 +140,7 @@ verifyToken,
 imagenes.list); */
 
 
-router.route("/login").get(imagenes.list);
+//router.route("/login").get(imagenes.list);
 
 
 module.exports = router;
