@@ -16,7 +16,6 @@ var {addFileMusic} = require('../controllers/fileMusicController')
 //peticion para subir 1 imagen
 router.post("/image", verifyToken, upload.single('image'),addImage);
 
-
 //peticion para subir 1 video
 router.post("/video", verifyToken, upload.single('video'),addVideo);
 
@@ -26,6 +25,10 @@ router.post("/file", verifyToken, upload.single('file'),addFile);
 // //peticion para subir 1 fileMusic
  router.post("/fileMusic", verifyToken, upload.single('fileMusic'),addFileMusic);
 
+
+
+ /************************************************************************************/
+ 
 router.get("/", function (req, res) {
   res.render("index");
 });

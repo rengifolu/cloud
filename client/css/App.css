@@ -15,3 +15,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+.App-title{
+  text-align: center;
+  color: aliceblue;
+}
+
+.App-intro{
+  text-align: center;
+  color: aliceblue;
+}

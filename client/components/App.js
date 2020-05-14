@@ -11,10 +11,10 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">myCloud-</h1>
+          <h1 className="App-title">Cloud</h1>
           {/* <img src={logo} alt=''/> */}
         </header>
-        <p className="App-intro">To  get fgstarted</p>
+        <p className="App-intro">Welcome</p>
         <Carrousel></Carrousel>
       </div>
     );

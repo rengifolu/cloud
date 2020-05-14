@@ -12,7 +12,7 @@ import withAuth from "./components/withAuth";
 
 import Agenda from "./components/usuario/Agenda";
 import Archivo from "./components/usuario/Archivo";
-import Imagen from "./components/usuario/Imagen";
+import Imagen from "./components/usuario/imagen/Imagen";
 import Nota from "./components/usuario/Nota";
 import Video from "./components/usuario/Video";
 

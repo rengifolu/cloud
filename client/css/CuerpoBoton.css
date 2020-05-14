@@ -1,9 +1,28 @@
-.CuerpoBoton {
-  float: left;
-  /*background: transparent;*/
-  background-color: transparent;
-}
 
-.card{
+/* .card{
   /*background-color: transparent;*/
+ 
+  /* .CuerpoBoton {
+    padding: 60px 0;
+    /*float: left;*/
+    /*background: transparent;*/
+    /*background-color: transparent;
+    text-align: center;
+  } */
+  .CuerpoBoton form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+@media all and (min-width: 480px) {
+/*   .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+ */
+
 }
