@@ -1,11 +1,14 @@
 import React from "react";
 
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import "../../../css/Coronavirus.css"
+import { Card, Button } from "react-bootstrap";
+import Collapse from 'react-bootstrap/Collapse'
 import "../../../css/CuerpoBoton.css"
 
 import BotonModal from './BotonModal'
- 
+import axios from "axios";
+
+//import imagenPublic from "../../../../public/storage/imgs/image-1589506632260.jpeg";
  
 class Imagen extends React.Component {
   constructor(props) {
@@ -13,18 +16,41 @@ class Imagen extends React.Component {
     
     
     this.state = {
-      name: "",
-      description: "",
+      imagenes: [],
       message: " ",
  
     };
  
   }
 
+callAxios = ()=>{
+  axios.get("/imagenes")
+  .then(res => {
+    //console.log("response",res)
+    const imagenes =  res.data.imagenes
+    this.setState(
+      {imagenes}
+      );
+  }) 
+}
+
   componentDidMount(e) {
-
+    this.callAxios()
   }
+  componentDidUpdate(prevProps,prepState ,snapShot) {
+     //console.log('componentDidUpdate state',prepState.imagenes ,this.state.imagenes )
+    /*console.log('componentDidUpdate props',prevProps,this.props ) */
+    
+ 
+     if (prepState.imagenes !== this.state.imagenes ) {
+      this.callAxios()
 
+    }  
+
+/*     if (this.props.imagenesId !== prevProps.imagenesId) {
+      this.callAxios()
+    } */
+  }
  
   render() {
     return (
@@ -34,58 +60,41 @@ class Imagen extends React.Component {
         <BotonModal></BotonModal>
 
 
-{/*         <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="name"
-              value={this.name}
-              name="name"
-              onChange={this.handleTextChange}
-            />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else --hhh
-            </Form.Text>
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>description</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="description"
-              name="description"
-              autocomplete="off"
-              value={this.description}
-              onChange={this.handleTextChange}
-            />
-          </Form.Group>
- */}
-
+{/*         <div >
+         <ul>
+           {this.state.imagenes.map( imagen => 
+             <li key={imagen.id}>{imagen.name}</li>
+           )}
+         </ul>
+      </div> */}
 
  
-
+        <div className="Coronavirus">
+        <h1> </h1>
+        <ul>
+          {this.state.imagenes.map(imagen => (
+            <li>
+              <Card style={{ width: "18rem" }}>
+                 <Card.Img
+                  variant="top"
+                  src={imagen.imgUrl}
+                  //src={imagenPublic}
+                  
+                />
+ {/*                <Card.Body>
+                  <Card.Title>{imagen.name} </Card.Title>
+                  <Card.Text>
+                    Name : {imagen.name} <br />
  
-
-{/*         <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="https://speechwiki.org/wp-content/uploads/2019/07/Sony-o-Canon-cu%C3%A1l-es-la-mejor-opci%C3%B3n.jpg" />
-          <Card.Body>
-            <Card.Title>Photos</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the bulk of
-              the card's content.
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card> */}
-        {/* <Form>
-  <div className="mb-3">
-    <Form.File id="formcheck-api-regular">
-      <Form.File.Label>Regular file input</Form.File.Label>
-      <Form.File.Input />
-    </Form.File>
-  </div>
-</Form> */}
+                  </Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body> */}
+              </Card>
+            </li>
+          ))}
+        </ul>
+      </div> 
+ 
       </div>
     );
   }

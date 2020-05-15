@@ -3,13 +3,16 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      console.log(file.mimetype)
+      //console.log(file)
+      //onsole.log(req)
+      //console.log(file.mimetype)
              switch(file.mimetype) {
         case 'image/jpeg':
           return cb(null, './public/storage/imgs') // template strings
         case 'video/mp4':
           return cb(null, './public/storage/vid') // template video
         case 'application/pdf':
+        case "application/octet-stream":
           return cb(null, './public/storage/files') //  file
         case 'audio/mpeg':
           return cb(null, './public/storage/music') // template fileMusic

@@ -49,15 +49,15 @@ class Userloged extends React.Component {
     //this.props.history.push("/"+e.target.value)
 
     switch(e.target.value) {
-      case 'Imagen':
+      case 'Images':
         return this.props.history.push("/"+e.target.value.toLowerCase());
-      case 'Video':
+      case 'Videos':
         return this.props.history.push("/"+e.target.value.toLowerCase());;
-      case 'Agenda':
+      case 'Diary':
         return this.props.history.push("/"+e.target.value.toLowerCase());
-      case 'Archivo':
+      case 'Files':
         return this.props.history.push("/"+e.target.value.toLowerCase());
-      case 'Nota':
+      case 'Notes':
         return this.props.history.push("/"+e.target.value.toLowerCase());
       default:
         return 'default';
@@ -68,7 +68,7 @@ class Userloged extends React.Component {
   render() {
     return (
       <div className="Userloged">
-        <p>{this.state.message}</p>
+        {/* <p>{this.state.message}</p> */}
         <p>
           {this.props.state.userLogin.user.first_name}{" "}
           {this.props.state.userLogin.user.last_name}
@@ -78,29 +78,29 @@ class Userloged extends React.Component {
 
         <button 
             className="BotonHomeUsuario" 
-            value="Imagen"
+            value="Images"
             onClick={this.onClick}
-            >Imagen</button>
+            >Images</button>
         <button 
             className="BotonHomeUsuario" 
-            value="Video"
+            value="Videos"
             onClick={this.onClick}
-            >Video</button>
+            >Videos</button>
         <button 
             className="BotonHomeUsuario" 
-            value="Agenda"
+            value="Diary"
             onClick={this.onClick}
-            >Agenda</button>
+            >Diary</button>
         <button 
             className="BotonHomeUsuario" 
-            value="Archivo"
+            value="Files"
             onClick={this.onClick}
-            >Archivo</button>
+            >Files</button>
         <button 
             className="BotonHomeUsuario" 
-            value="Nota"
+            value="Notes"
             onClick={this.onClick
-            }>Nota</button>
+            }>Notes</button>
 
         {/* <h1>1 : {this.props.state.userLogin.isAuthenticated.toString()}</h1> */}
       </div>

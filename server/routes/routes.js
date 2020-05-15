@@ -16,6 +16,20 @@ var {addFileMusic} = require('../controllers/fileMusicController')
 //peticion para subir 1 imagen
 router.post("/image", verifyToken, upload.single('image'),addImage);
 
+const Image = require('../models/Image')
+router.get("/imagenes", async(req,res)=>{
+  const imagenes = await Image.find()
+  //console.log(imagenes)
+  res.send({imagenes})
+  res.end()
+});
+ 
+
+/* router.post("/image", function (req, res) {
+  console.log(req.body)
+  res.send("hola")
+});
+ */
 //peticion para subir 1 video
 router.post("/video", verifyToken, upload.single('video'),addVideo);
 

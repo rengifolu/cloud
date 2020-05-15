@@ -27,11 +27,11 @@ export const Routes = () => (
     {/* ruta protegidas por token */}
     <Route exact path="/userloged" component={withAuth(Userloged)} />
 
-    <Route exact path="/agenda" component={Agenda} />
-    <Route exact path="/archivo" component={Archivo} />
-    <Route exact path="/imagen" component={Imagen} />
-    <Route exact path="/nota" component={Nota} />
-    <Route exact path="/video" component={Video} />
+    <Route exact path="/diary" component={Agenda} />
+    <Route exact path="/files" component={Archivo} />
+    <Route exact path="/images" component={Imagen} />
+    <Route exact path="/notes" component={Nota} />
+    <Route exact path="/videos" component={Video} />
   </Switch>
 );
 export default Routes;

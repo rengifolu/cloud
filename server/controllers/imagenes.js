@@ -5,6 +5,7 @@ const Image = require('../models/Image')
 module.exports = {
   //esta funcion la manejamos como promesa
   async addImage(req,res){
+    //console.log("req",req)
     try {
       const {
         name,
@@ -18,11 +19,20 @@ module.exports = {
         description
       })
 
+
+      if (req.file) {
+        const {filename} = req.file
+        image.setImgUrl(filename)
+      }
+
       const imagenStored = await image.save()
-      res.status(201).send({imagenStored})
+      res.status(200).send({imagenStored})
+      //res.end()
+      //res.render("index");
       //res.status(201).send({succes:true})
+      //res.send('<h1>image successfully added!</h1>');
     } catch (error) {
-      
+      console.log("error al subir imagen : ",error)
     }
   },
 

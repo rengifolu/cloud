@@ -7,6 +7,8 @@ const cookieParser = require("cookie-parser");
 const authConfig = require("./auth/config");
 const session = require("express-session");
 
+//const authConfig = require("../public/storage/imgs");
+
 //const initCookie = require("./middleware/initCookie");
 
 var app = express();
@@ -26,13 +28,14 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
+app.use((err,req, res, next) => {
   //console.log("req.sessionID", req.sessionID);
   // console.log("req.session actual", req.session);
   // console.log("req.session id", req.sessionID);
   // console.log("req.cookies.token ", req.cookies.token);
   // console.log("req.cookies.user ", req.cookies.user);
   // console.log("req.session.email ", req.session.email);
+  console.log('This is the invalid field ->', err.field)
 
   if (req.cookies.token && !req.session.email) {
     console.log("limpiadas cookies");
@@ -62,6 +65,13 @@ mongoose.connect(
     useFindAndModify: false,
   }
 );
+
+
+
+//app.use("/public", express.static(`${__dirname}/public/storage/imgs`));
+app.use("/public", express.static("/home/diego/Documentos/react/cloud/public/storage/imgs"));
+///home/diego/Documentos/react/cloud/
+console.log('__dirname ',  __dirname)
 
 app.use("/", router);
 

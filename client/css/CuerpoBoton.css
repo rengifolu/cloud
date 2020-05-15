@@ -14,6 +14,12 @@
     max-width: 320px;
   }
 
+  .CuerpoBoton{
+    text-align: center;
+    color: aliceblue;
+  }
+  
+
 @media all and (min-width: 480px) {
 /*   .Login {
     padding: 60px 0;
