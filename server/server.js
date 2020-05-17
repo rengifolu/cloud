@@ -28,19 +28,19 @@ app.use(
   })
 );
 
-app.use((err,req, res, next) => {
+app.use((err, req, res, next) => {
   //console.log("req.sessionID", req.sessionID);
   // console.log("req.session actual", req.session);
   // console.log("req.session id", req.sessionID);
   // console.log("req.cookies.token ", req.cookies.token);
   // console.log("req.cookies.user ", req.cookies.user);
   // console.log("req.session.email ", req.session.email);
-  console.log('This is the invalid field ->', err.field)
+  console.log("This is the invalid field ->", err.field);
 
   if (req.cookies.token && !req.session.email) {
     console.log("limpiadas cookies");
     var d = new Date();
-    console.log(d.getDate())
+    console.log(d.getDate());
     //res.clearCookie("user_sid");
     res.clearCookie("user");
     res.clearCookie("token");
@@ -66,12 +66,15 @@ mongoose.connect(
   }
 );
 
-
-
 //app.use("/public", express.static(`${__dirname}/public/storage/imgs`));
-app.use("/public", express.static("/home/diego/Documentos/react/cloud/public/storage/imgs"));
+
+var cadena = __dirname.substring(0, __dirname.length - 6);
+console.log("cadena : ", cadena);
+
+app.use("/public", express.static(cadena + "public/storage/imgs"));
 ///home/diego/Documentos/react/cloud/
-console.log('__dirname ',  __dirname)
+
+console.log("__dirname ", __dirname);
 
 app.use("/", router);
 
