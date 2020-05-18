@@ -60,7 +60,7 @@ class Login extends React.Component {
     const { errors, email, password, isLoading } = this.state;
     return (
       <div className="Login">
-{/*         <h1>{this.props.state.contador}</h1>
+        {/*         <h1>{this.props.state.contador}</h1>
         <button onClick={this.props.increment}>+</button>
         <button onClick={this.props.decrement}>-</button> */}
 

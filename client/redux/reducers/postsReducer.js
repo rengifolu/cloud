@@ -8,6 +8,7 @@ export const FETCH_POSTS_REQUEST = "FETCH_POSTS_REQUEST";
 export const FETCH_POSTS_SUCCES = "FETCH_POSTS_SUCCES";
 export const FETCH_POSTS_ERROR = "FETCH_POSTS_ERROR";
 export const AUTH_LOGOUT = "AUTH_LOGOUT";
+export const DELETE_POSTS = "DELETE_POSTS";
 
 const posts = (state = initialState, action) => {
   console.log(action.type);
@@ -34,6 +35,8 @@ const posts = (state = initialState, action) => {
         ...state, // Preserve states that are unchanged
         isAuthenticated: false,
       };
+    case DELETE_POSTS:
+      return {};
     default:
       return state;
   }

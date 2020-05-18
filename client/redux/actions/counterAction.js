@@ -11,10 +11,3 @@ export const decrement = () => {
     type: DECREMENT,
   };
 };
-
-//store.dispatch(increment());
-//store.dispatch(decrement());
-
-// store.dispatch({
-//   type: "INCREMENT",
-// });

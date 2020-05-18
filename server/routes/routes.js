@@ -18,7 +18,6 @@ var { logOut } = require("../controllers/logOut");
 var { register } = require("../controllers/registerController");
 var { userloged } = require("../controllers/userlogedController");
 
-
 router.get("/", function (req, res) {
   res.render("index");
 });
@@ -36,17 +35,12 @@ router.get("/checkToken", verifyToken, function (req, res) {
 
 router.get("/userloged", verifyToken, userloged);
 
-
-
 /////////////////////////////peticion para subir 1 imagen///////////////////////////////////////////
 router.post("/image", verifyToken, upload.single("image"), addImage);
 
 router.get("/imagenes", getImages);
 
-
-router.post("/delete/", verifyToken,destroy);
-
-
+router.post("/delete/:id", verifyToken, destroy);
 
 //peticion para subir 1 video
 router.post("/video", verifyToken, upload.single("video"), addVideo);
@@ -55,11 +49,11 @@ router.post("/video", verifyToken, upload.single("video"), addVideo);
 router.post("/file", verifyToken, upload.single("file"), addFile);
 
 // //peticion para subir 1 fileMusic
-router.post("/fileMusic",verifyToken,upload.single("fileMusic"),addFileMusic
+router.post(
+  "/fileMusic",
+  verifyToken,
+  upload.single("fileMusic"),
+  addFileMusic
 );
-
-
-
-
 
 module.exports = router;

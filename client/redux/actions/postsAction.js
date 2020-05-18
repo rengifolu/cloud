@@ -5,6 +5,7 @@ import {
   FETCH_POSTS_SUCCES,
   FETCH_POSTS_ERROR,
   AUTH_LOGOUT,
+  DELETE_POSTS,
 } from "../reducers/postsReducer";
 
 export function request() {
@@ -38,7 +39,6 @@ export const doLogin = ({ email, password }) => {
           console.log("desde dispatch");
           //localStorage.setItem("user", JSON.stringify(response.data.user));
           //console.log(response.data.user);
-          //sessionStorage.setItem("usuario", "555");
         } else {
           //revisar
           const error = new Error(response.error);
@@ -67,13 +67,37 @@ export const doLogOut = () => {
       .get("./logout")
       .then((response) => {
         dispatch(setCurrentUser({}));
-        localStorage.removeItem('state');
+        localStorage.removeItem("state");
       })
       .catch((error) => {
         dispatch(erro(error));
       });
   };
 };
+
+export const eliminar = (id) => {
+  console.log("eliminar action");
+  return (dispatch) => {
+    return axios
+      .post("/delete/" + id, id)
+      .then((response) => {
+        console.log(response);
+        dispatch(deletePost(response));
+      })
+      .catch((error) => {
+        dispatch(erro(error));
+      });
+  };
+};
+
+//this.props.decrement();
+export function deletePost(response) {
+  console.log(response);
+  return {
+    type: DELETE_POSTS,
+    //imagenes: response.imagenes,
+  };
+}
 
 export function setCurrentUser(user) {
   return {

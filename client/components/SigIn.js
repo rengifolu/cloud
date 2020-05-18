@@ -15,6 +15,7 @@ class SigIn extends React.Component {
       email: "",
       password: "",
       messageFromServer: "",
+      imagenes: [],
     };
 
     this.handleTextChange = this.handleTextChange.bind(this);
